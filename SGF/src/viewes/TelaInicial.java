@@ -5,15 +5,23 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.DefaultEditorKit.InsertBreakAction;
 
+import Controller.Atualiza;
 import Controller.Base;
 import Controller.Insercao;
+import Controller.Pesquisa;
+import modelo.Usuario;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JButton;
+import javax.swing.JComponent;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaInicial extends JFrame {
 
@@ -125,22 +133,50 @@ public class TelaInicial extends JFrame {
 		contentPane.add(btnNovo);
 
 		JButton btnDetalhes = new JButton("Detalhes");
+		btnDetalhes.setEnabled(false);
+		btnDetalhes.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Pesquisa b = new Pesquisa();
+				b.busca();;
+			}
+		});
 		btnDetalhes.setBounds(120, 266, 89, 23);
 		contentPane.add(btnDetalhes);
 
 		JButton btnAtualizar = new JButton("Atualizar");
+		btnAtualizar.setEnabled(false);
+		btnAtualizar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				habilita();
+				Insercao i = new Insercao();
+				i.insere();;
+			}
+		});
 		btnAtualizar.setBounds(219, 266, 89, 23);
 		contentPane.add(btnAtualizar);
 
 		JButton btnExcluir = new JButton("Excluir");
+		btnExcluir.setEnabled(false);
+		btnExcluir.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				limpa();
+
+			}
+		});
 		btnExcluir.setBounds(318, 266, 89, 23);
 		contentPane.add(btnExcluir);
-		
+
 		JButton btnSalvar = new JButton("Salvar");
+		btnSalvar.setEnabled(false);
 		btnSalvar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.Insercao();
+				habilita();
+				Insercao i = new Insercao();
+				i.insere();;
 			}
 		});
 		btnSalvar.setBounds(417, 266, 89, 23);
@@ -148,7 +184,7 @@ public class TelaInicial extends JFrame {
 
 	}
 
-	public static JTextField getTextID() {
+	public static JTextField getTextID(Usuario value) {
 		return textID;
 	}
 
@@ -156,7 +192,7 @@ public class TelaInicial extends JFrame {
 		this.textID = textID;
 	}
 
-	public static JTextField getTextNome() {
+	public static JTextField getTextNome(Usuario value) {
 		return textNome;
 	}
 
@@ -164,7 +200,7 @@ public class TelaInicial extends JFrame {
 		this.textNome = textNome;
 	}
 
-	public static JTextField getTextCargo() {
+	public static JTextField getTextCargo(Usuario value) {
 		return textCargo;
 	}
 
@@ -172,7 +208,7 @@ public class TelaInicial extends JFrame {
 		this.textCargo = textCargo;
 	}
 
-	public static JTextField getTextSalario() {
+	public static JTextField getTextSalario(Usuario value) {
 		return textSalario;
 	}
 
@@ -180,7 +216,7 @@ public class TelaInicial extends JFrame {
 		this.textSalario = textSalario;
 	}
 
-	public static JTextField getTextTelefone() {
+	public static JTextField getTextTelefone(Usuario value) {
 		return textTelefone;
 	}
 
@@ -188,7 +224,7 @@ public class TelaInicial extends JFrame {
 		this.textTelefone = textTelefone;
 	}
 
-	public static JTextField getTextEndereco() {
+	public static JTextField getTextEndereco(Usuario value) {
 		return textEndereco;
 	}
 
@@ -203,6 +239,16 @@ public class TelaInicial extends JFrame {
 		textSalario.setEnabled(true);
 		textTelefone.setEnabled(true);
 		textEndereco.setEnabled(true);
+
+	}
+
+	public void limpa() {
+		textID.setText("");
+		textNome.setText("");
+		textCargo.setText("");
+		textSalario.setText("");
+		textTelefone.setText("");
+		textEndereco.setText("");
 
 	}
 }

@@ -1,5 +1,7 @@
 package modelo;
 
+import javax.swing.JTextField;
+
 public class Usuario {
 	private int ID;
 	private String NomeFuncionario;
@@ -7,6 +9,11 @@ public class Usuario {
 	private String Salario;
 	private int Telefone;
 	private String Endereco;
+
+	public Usuario(JTextField id2, JTextField nome, JTextField cargo2, JTextField salario2, JTextField telefone2,
+			JTextField endereco2) {
+		// TODO Auto-generated constructor stub
+	}
 
 	public int getID() {
 		return ID;
