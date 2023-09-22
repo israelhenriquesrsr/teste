@@ -11,6 +11,6 @@ public class Exclui {
 		
 		Usuario retornavalor = Base.cadastro.remove(p);
 		
-		JOptionPane.showConfirmDialog(null, "Dados removidos: "+ retornavalor);
+		JOptionPane.showConfirmDialog(null, "Dados removidos: " + retornavalor);
 	} 
 }
